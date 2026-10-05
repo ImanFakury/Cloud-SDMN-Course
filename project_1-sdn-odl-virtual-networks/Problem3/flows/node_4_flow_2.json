@@ -1,0 +1,50 @@
+{
+    "flow": [
+        {
+            "id": "2",
+            "table_id": 0,
+            "priority": 100,
+            "match": {
+                "ethernet-match": {
+                    "ethernet-type": {
+                        "type": 2048
+                    }
+                },
+                "ipv4-destination": "10.0.1.1/32"
+            },
+            "instructions": {
+                "instruction": [
+                    {
+                        "order": 0,
+                        "apply-actions": {
+                            "action": [
+                                {
+                                    "order": 0,
+                                    "set-dl-src-action": {
+                                        "address": "00:00:00:00:01:fe"
+                                    }
+                                },
+                                {
+                                    "order": 1,
+                                    "set-dl-dst-action": {
+                                        "address": "00:00:00:00:01:01"
+                                    }
+                                },
+                                {
+                                    "order": 2,
+                                    "dec-nw-ttl": {}
+                                },
+                                {
+                                    "order": 3,
+                                    "output-action": {
+                                        "output-node-connector": "1"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
